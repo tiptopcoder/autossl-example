@@ -1,0 +1,14 @@
+version: "3.6"
+services:
+  goservice:
+    container_name: 'autossl-go'
+    build: "./app"
+  nginx:
+    container_name: 'autossl-nginx'
+    build: "./nginx"
+    ports:
+      - "80:80"
+      - "443:443"
+      - "8999:8999"
+    depends_on:
+      - "goservice"
