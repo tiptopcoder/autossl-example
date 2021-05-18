@@ -5,7 +5,10 @@ services:
     build: "./app"
   nginx:
     container_name: 'autossl-nginx'
-    build: "./nginx"
+    build: 
+      context: "./nginx"
+      args:
+        - RESTY_RPM_FLAVOR="-debug"
     ports:
       - "80:80"
       - "443:443"
